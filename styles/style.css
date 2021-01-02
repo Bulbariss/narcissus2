@@ -189,6 +189,14 @@ textarea::-webkit-input-placeholder {
   z-index: -1;
 }
 
+.blur-up {
+  transition-duration: 800ms;
+  opacity: 0;
+}
+.blur-up.loaded {
+  opacity: 0.99;
+}
+
 .center-xy {
   top: 50%;
   left: 50%;
