@@ -33,7 +33,7 @@ export default function BackgroundImage({ image, children }) {
               aria-hidden="true"
               alt=""
               className={`absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z ${
-                loaded2 && "hidden"
+                loaded2 && ""
               }`}
               src={`/_next/image?url=${image}&w=80&q=75`}
               loading="eager"
