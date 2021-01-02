@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function BackgroundImage({ image, children }) {
+  let [loaded, setLoaded] = useState(false);
   return (
     <div className="relative flex items-center justify-center w-screen min-h-screen">
       <div className="absolute w-full h-full">
@@ -30,16 +32,28 @@ export default function BackgroundImage({ image, children }) {
           />
           {/* Your image, optimized by next/image */}
           <Image
+            onLoad={() => setLoaded(true)}
             layout="fill"
             quality={75}
             objectFit="cover"
             src={image}
             alt=""
-            className="transition-all duration-200 select-none -z"
+            className={`transition-opacity select-none blur-up -z ${
+              loaded ? "loaded" : ""
+            }`}
           ></Image>
         </div>
       </div>
       {children}
+      <style jsx global>{`
+        .blur-up {
+          transition-duration: 800ms;
+          opacity: 0;
+        }
+        .blur-up.loaded {
+          opacity: 0.99;
+        }
+      `}</style>
     </div>
   );
 }
