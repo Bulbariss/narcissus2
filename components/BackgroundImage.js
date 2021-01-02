@@ -3,22 +3,26 @@ import { useEffect, useRef, useState } from "react";
 
 export default function BackgroundImage({ image, children }) {
   let [loaded, setLoaded] = useState(false);
+  let [loaded2, setLoaded2] = useState(false);
   let imageRef = useRef();
   useEffect(() => {
     let imageElement = imageRef.current.getElementsByClassName("blur-up")[0];
     if (imageElement.complete) {
       setLoaded(true);
-      imageElement.style.transitionDuration = "200ms";
+      imageElement.style.transitionDuration = "1ms";
+      setLoaded2(true);
     }
   }, []);
   return (
-    <div className="relative flex items-center justify-center w-screen min-h-screen">
+    <div className="relative flex flex-col items-center justify-center w-screen min-h-screen space-y-12">
       <div className="absolute w-full h-full">
         <div ref={imageRef} className="relative w-full h-full overflow-hidden">
           <img
             aria-hidden="true"
             alt=""
-            className="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z"
+            className={`absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z ${
+              loaded2 && ""
+            }`}
             src={`/_next/image?url=${image}&w=80&q=75`}
             loading="eager"
             style={{

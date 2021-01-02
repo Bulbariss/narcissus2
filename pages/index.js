@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import { getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
+import Link from "next/link";
 
 export default function Index({ seo }) {
   return (
@@ -12,7 +13,14 @@ export default function Index({ seo }) {
           pathname="test"
           post={seo}
         />
-        <h2>Home</h2>
+        <section className="relative flex flex-col items-center justify-center w-screen min-h-screen space-y-12">
+          <h1 className="z-10 text-5xl font-black text-black">Home</h1>
+          <Link href="/testing">
+            <a className="z-10 px-10 py-4 font-bold text-white bg-indigo-700">
+              Testing
+            </a>
+          </Link>
+        </section>
       </Layout>
     </>
   );

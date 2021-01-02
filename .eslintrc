@@ -10,6 +10,7 @@
     // https://eslint.org/docs/2.0.0/rules/strict
     "strict": 0,
     "react/prop-types": 0,
+    "jsx-a11y/anchor-is-valid": 0,
     "react/react-in-jsx-scope": 0,
     "no-console": 1,
     "react-hooks/rules-of-hooks": 2,
