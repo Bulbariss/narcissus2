@@ -142,8 +142,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .blur-up {
-  transition-duration: 100ms;
-  transition-delay: 400ms;
+  transition-duration: 800ms;
   opacity: 0;
 }
 .blur-up.loaded {

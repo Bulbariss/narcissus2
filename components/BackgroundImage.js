@@ -12,7 +12,6 @@ export default function BackgroundImage({ image, children }) {
       setLoaded(true);
       setLoaded2(true);
       imageElement.style.transitionDuration = "1ms";
-      imageElement.style.transitionDelay = "1ms";
     }
   }, []);
   return (
@@ -34,7 +33,7 @@ export default function BackgroundImage({ image, children }) {
               aria-hidden="true"
               alt=""
               className={`absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z ${
-                loaded2 && ""
+                loaded2 && "hidden"
               }`}
               src={`/_next/image?url=${image}&w=80&q=75`}
               loading="eager"
@@ -45,7 +44,6 @@ export default function BackgroundImage({ image, children }) {
               }}
             />
             <Image
-              loading="eager"
               onLoad={() => setLoaded(true)}
               layout="fill"
               quality={75}

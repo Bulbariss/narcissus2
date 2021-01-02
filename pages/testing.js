@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
-import BackgroundImage from "../components/BackgroundImage";
+import BackgroundImage from "../components/BackgroundImage2";
 // import Image from "next/image";
 
 export default function Index({ seo, post }) {
@@ -20,7 +20,9 @@ export default function Index({ seo, post }) {
             {post.heroText}
           </h1>
           <Link href="/">
-            <a className="z-10 px-10 py-4 text-white bg-indigo-700 font-bold">Home</a>
+            <a className="z-10 px-10 py-4 font-bold text-white bg-indigo-700">
+              Home
+            </a>
           </Link>
         </BackgroundImage>
         <section className="max-w-2xl px-4 py-12 mx-auto">
