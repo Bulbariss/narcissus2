@@ -1,12 +1,20 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function BackgroundImage({ image, children }) {
   let [loaded, setLoaded] = useState(false);
+  let imageRef = useRef();
+  useEffect(() => {
+    let imageElement = imageRef.current.getElementsByClassName("blur-up")[0];
+    if (imageElement.complete) {
+      setLoaded(true);
+      imageElement.style.transitionDuration = "200ms";
+    }
+  }, []);
   return (
     <div className="relative flex items-center justify-center w-screen min-h-screen">
       <div className="absolute w-full h-full">
-        <div className="relative w-full h-full overflow-hidden">
+        <div ref={imageRef} className="relative w-full h-full overflow-hidden">
           <img
             aria-hidden="true"
             alt=""
