@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 
 export default function BackgroundImage({ image, children }) {
   let [loaded, setLoaded] = useState(false);
+  let [loaded2, setLoaded2] = useState(false);
   let imageRef = useRef();
   useEffect(() => {
     let imageElement = imageRef.current.getElementsByClassName("blur-up")[0];
     if (imageElement.complete) {
       setLoaded(true);
+      setLoaded2(true);
       imageElement.style.transitionDuration = "1ms";
     }
   }, []);
@@ -30,7 +32,9 @@ export default function BackgroundImage({ image, children }) {
             <img
               aria-hidden="true"
               alt=""
-              className={`absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z`}
+              className={`absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full transition-all duration-200 select-none -z ${
+                loaded2 && "hidden"
+              }`}
               src={`/_next/image?url=${image}&w=80&q=75`}
               loading="eager"
               style={{
