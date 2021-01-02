@@ -12,6 +12,7 @@ export default function BackgroundImage({ image, children }) {
       setLoaded(true);
       setLoaded2(true);
       imageElement.style.transitionDuration = "1ms";
+      imageElement.style.transitionDelay = "1ms";
     }
   }, []);
   return (
