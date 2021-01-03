@@ -3,9 +3,15 @@ import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
 import BackgroundImage from "../components/BackgroundImage2";
+import getUnsplashImage from "../components/getImage";
 // import Image from "next/image";
-
 export default function Index({ seo, post }) {
+  // let img2 = require(`../images/${post.heroImage.path}`);
+  let img = require(`../images/${post.heroImage.path}?resize`);
+
+  // console.log(img2);
+  console.log(img);
+  console.log(post.heroImage.path);
   return (
     <>
       <Layout>
@@ -26,6 +32,7 @@ export default function Index({ seo, post }) {
           </Link>
         </BackgroundImage>
         <section className="max-w-2xl px-4 py-12 mx-auto">
+          {/* <img src={img.src} alt="" /> */}
           <p>{post.text}</p>
         </section>
       </Layout>
@@ -36,6 +43,19 @@ export default function Index({ seo, post }) {
 export async function getStaticProps() {
   const data = await getTestingPage();
   const data2 = await getSiteMetadata();
+  async function downloadImage(url) {
+    await getUnsplashImage(url);
+  }
+  await getUnsplashImage(
+    "https://contentpanel.xyz/test/wp-content/uploads/2021/01/pexels-mohamed-sarim-1033729-scaled.jpg"
+  );
+  Object.values(data.testing.getContent).map((value) => {
+    if (typeof value === "object" && "sourceUrl" in value) {
+      downloadImage(value.sourceUrl);
+      value.path = value.sourceUrl.split("wp-content/")[1].replace(/\//g, "_");
+    }
+  });
+
   return {
     props: {
       post: data.testing.getContent,
