@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Head from "next/head";
 
 export default function BackgroundImage({ image, children }) {
@@ -9,15 +9,15 @@ export default function BackgroundImage({ image, children }) {
     let imageElement2 = imageRef.current.getElementsByClassName("bg-image")[0];
     imageElement2.classList.add("loaded");
   }
-  useEffect(() => {
-    let imageElement = imageRef.current.getElementsByClassName("test123")[0];
-    if (imageElement.complete) {
-      let imageElement2 = imageRef.current.getElementsByClassName(
-        "bg-image"
-      )[0];
-      imageElement2.classList.add("loaded");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let imageElement = imageRef.current.getElementsByClassName("test123")[0];
+  //   if (imageElement.complete) {
+  //     let imageElement2 = imageRef.current.getElementsByClassName(
+  //       "bg-image"
+  //     )[0];
+  //     imageElement2.classList.add("loaded");
+  //   }
+  // }, []);
   return (
     <>
       <Head>
