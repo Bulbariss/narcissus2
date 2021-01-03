@@ -154,8 +154,7 @@ textarea::-webkit-input-placeholder {
   background: no-repeat center center;
   background-size: cover;
   transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.35s;
+  transition-duration: 0.5s;
 }
 .bg-image.loaded {
   opacity: 0;

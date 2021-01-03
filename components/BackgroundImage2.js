@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Head from "next/head";
 
 export default function BackgroundImage({ image, children }) {
@@ -9,13 +9,15 @@ export default function BackgroundImage({ image, children }) {
     let imageElement2 = imageRef.current.getElementsByClassName("bg-image")[0];
     imageElement2.classList.add("loaded");
   }
-  // useEffect(() => {
-  //   let imageElement = imageRef.current.getElementsByClassName("test123")[0];
-  //   if (imageElement.complete) {
-  //     // setLoaded(true);
-  //     // imageElement2.style.animationDuration = "1ms";
-  //   }
-  // }, []);
+  useEffect(() => {
+    let imageElement = imageRef.current.getElementsByClassName("test123")[0];
+    if (imageElement.complete) {
+      let imageElement2 = imageRef.current.getElementsByClassName(
+        "bg-image"
+      )[0];
+      imageElement2.classList.add("loaded");
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -43,7 +45,7 @@ export default function BackgroundImage({ image, children }) {
             style={{
               backgroundImage: `url("/_next/image?url=${image}&w=80&q=75")`,
             }}
-            className={`bg-image w-full h-full`}
+            className={`bg-image w-full h-full z-10 delay-200`}
           ></div>
         </div>
         {children}
