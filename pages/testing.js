@@ -20,7 +20,7 @@ export default function Index({ seo, post }) {
             {post.heroText}
           </h1>
           <Link href="/">
-            <a className="z-10 px-10 py-4 font-bold text-white bg-indigo-700">
+            <a className="z-10 px-10 py-4 mt-4 font-bold text-white bg-indigo-700 rounded-2xl">
               Home
             </a>
           </Link>
