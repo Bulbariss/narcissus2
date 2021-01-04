@@ -2,9 +2,7 @@ import { useRef } from "react";
 
 export default function BackgroundImage({ image, children, alt }) {
   let imageRef = useRef();
-  let img = require(`../images/${image}?resize`);
   function imageLoaded() {
-    console.log("object");
     let imagePlaceholder = imageRef.current.getElementsByClassName(
       "bg-image"
     )[0];
@@ -27,14 +25,19 @@ export default function BackgroundImage({ image, children, alt }) {
         <div className="absolute top-0 left-0 w-full h-full">
           <div
             style={{
-              backgroundImage: `url("${img.placeholder}")`,
+              backgroundImage: `url("${image.placeholder}")`,
             }}
             className={`bg-image w-full h-full z-10 delay-200`}
           ></div>
         </div>
-        <picture onLoad={() => imageLoaded()}>
-          <source srcSet={img.srcSet} type="image/jpeg" />
-          <img src={img.src} alt={alt ? alt : ""} />
+        <picture className="absolute top-0 left-0 w-full h-full">
+          <source srcSet={image.srcSet} type="image/jpeg" />
+          <img
+            onLoad={() => imageLoaded()}
+            className="object-cover w-full h-full"
+            src={image.src}
+            alt={alt ? alt : ""}
+          />
         </picture>
         {children}
       </div>

@@ -1,17 +1,11 @@
-import Link from "next/link";
+// import Link from "next/link";
 import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
-import BackgroundImage from "../components/BackgroundImage2";
+// import BackgroundImage from "../components/BackgroundImage3";
 import getUnsplashImage from "../components/getImage";
 // import Image from "next/image";
 export default function Index({ seo, post }) {
-  // let img2 = require(`../images/${post.heroImage.path}`);
-  let img = require(`../images/${post.heroImage.path}?resize`);
-
-  // console.log(img2);
-  console.log(img);
-  console.log(post.heroImage.path);
   return (
     <>
       <Layout>
@@ -21,7 +15,7 @@ export default function Index({ seo, post }) {
           pathname="test"
           post={seo}
         />
-        <BackgroundImage image={post.heroImage.sourceUrl}>
+        {/* <BackgroundImage image={image}>
           <h1 className="z-10 text-5xl font-black text-gray-100">
             {post.heroText}
           </h1>
@@ -30,9 +24,8 @@ export default function Index({ seo, post }) {
               Home
             </a>
           </Link>
-        </BackgroundImage>
+        </BackgroundImage> */}
         <section className="max-w-2xl px-4 py-12 mx-auto">
-          {/* <img src={img.src} alt="" /> */}
           <p>{post.text}</p>
         </section>
       </Layout>
@@ -43,18 +36,15 @@ export default function Index({ seo, post }) {
 export async function getStaticProps() {
   const data = await getTestingPage();
   const data2 = await getSiteMetadata();
-  async function downloadImage(url) {
-    await getUnsplashImage(url);
-  }
-  await getUnsplashImage(
-    "https://contentpanel.xyz/test/wp-content/uploads/2021/01/pexels-mohamed-sarim-1033729-scaled.jpg"
+
+  // eslint-disable-next-line no-undef
+  await Promise.all(
+    Object.values(data.testing.getContent).map(async (value) => {
+      if (typeof value === "object" && "sourceUrl" in value) {
+        value.path = await getUnsplashImage(value.sourceUrl);
+      }
+    })
   );
-  Object.values(data.testing.getContent).map((value) => {
-    if (typeof value === "object" && "sourceUrl" in value) {
-      downloadImage(value.sourceUrl);
-      value.path = value.sourceUrl.split("wp-content/")[1].replace(/\//g, "_");
-    }
-  });
 
   return {
     props: {
