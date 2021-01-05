@@ -1,14 +1,14 @@
 import fs from "fs";
+import { compressImage } from "./compressImage.js";
 const request = require("request");
 // const imagemin = require("imagemin");
 // const imageminMozjpeg = require("imagemin-mozjpeg");
 // const imageminPngquant = require("imagemin-pngquant");
-const util = require("util");
-const writeFile = util.promisify(fs.writeFile);
 
 async function download(url, name) {
   /* Create an empty file where we can save data */
-  const file = fs.createWriteStream(`${process.cwd()}/images/m/${name}`);
+  const path = `${process.cwd()}/public/images/${name}`;
+  const file = fs.createWriteStream(path);
 
   /* Using Promises so that we can use the ASYNC AWAIT syntax */
   // eslint-disable-next-line no-undef
@@ -21,7 +21,7 @@ async function download(url, name) {
       .pipe(file)
       .on("finish", async () => {
         console.log(`${name} is finished downloading.`);
-        resolve(writeImage(name));
+        resolve(compressImage(path));
       })
       .on("error", (error) => {
         reject(error);
@@ -31,40 +31,12 @@ async function download(url, name) {
   });
 }
 
-const writeImage = (name) => {
-  const srcdir = `${process.cwd()}/images/m/`;
-  // eslint-disable-next-line no-undef
-  return new Promise((resolve, reject) => {
-    require("imagemin")([srcdir + name], {
-      plugins: [
-        require("imagemin-mozjpeg")({
-          quality: 70,
-        }),
-        require("imagemin-pngquant")({
-          speed: 4,
-          quality: [0.6, 0.8],
-        }),
-      ],
-    })
-      .then((file) => {
-        writeFile(srcdir + name, file[0].data).then(() => {
-          console.log(`${name} is finished compressing.`);
-          resolve();
-        });
-      })
-      .catch((error) => {
-        console.log(`Something happened: ${error}`);
-        reject();
-      });
-  });
-};
-
 const getUnsplashImage = async (photo) => {
   const name = photo.split("wp-content/")[1].replace(/\//g, "_");
 
   // eslint-disable-next-line no-undef
   return Promise.all([download(photo, name)]).then(() => {
-    return "m/" + name;
+    return name;
   });
 };
 

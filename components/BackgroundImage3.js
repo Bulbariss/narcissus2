@@ -31,7 +31,7 @@ export default function BackgroundImage({ image, children, alt }) {
           ></div>
         </div>
         <picture className="absolute top-0 left-0 w-full h-full">
-          <source srcSet={image.srcSet} type="image/jpeg" />
+          <source srcSet={image.srcset} type="image/jpeg" />
           <img
             onLoad={() => imageLoaded()}
             className="object-cover w-full h-full"

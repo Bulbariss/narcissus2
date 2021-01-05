@@ -1,11 +1,12 @@
-// import Link from "next/link";
+import Link from "next/link";
 import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
-// import BackgroundImage from "../components/BackgroundImage3";
+import BackgroundImage from "../components/BackgroundImage3";
 import getUnsplashImage from "../components/getImage";
+import { getFluidImage } from "../components/sharpFunctions";
 // import Image from "next/image";
-export default function Index({ seo, post }) {
+export default function Index({ seo, post, test }) {
   return (
     <>
       <Layout>
@@ -15,7 +16,7 @@ export default function Index({ seo, post }) {
           pathname="test"
           post={seo}
         />
-        {/* <BackgroundImage image={image}>
+        <BackgroundImage image={test}>
           <h1 className="z-10 text-5xl font-black text-gray-100">
             {post.heroText}
           </h1>
@@ -24,7 +25,7 @@ export default function Index({ seo, post }) {
               Home
             </a>
           </Link>
-        </BackgroundImage> */}
+        </BackgroundImage>
         <section className="max-w-2xl px-4 py-12 mx-auto">
           <p>{post.text}</p>
         </section>
@@ -36,7 +37,6 @@ export default function Index({ seo, post }) {
 export async function getStaticProps() {
   const data = await getTestingPage();
   const data2 = await getSiteMetadata();
-
   // eslint-disable-next-line no-undef
   await Promise.all(
     Object.values(data.testing.getContent).map(async (value) => {
@@ -45,11 +45,14 @@ export async function getStaticProps() {
       }
     })
   );
-
+  const data3 = await getFluidImage(
+    "/images/uploads_2021_01_pexels-mohamed-sarim-1033729-scaled.jpg"
+  );
   return {
     props: {
       post: data.testing.getContent,
       seo: data2.siteConfig.getContent,
+      test: data3,
     },
   };
 }
