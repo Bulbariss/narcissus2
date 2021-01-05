@@ -32,16 +32,13 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-plugin-eslint": "2.0.8",
     "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "lqip-loader": "^2.2.1",
     "postcss-100vh-fix": "^1.0.2",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "2.2.1",
     "sharp": "^0.27.0",
     "styled-jsx": "^3.3.2",
-    "tailwindcss": "2.0.2",
-    "webp-loader": "^0.6.0"
+    "tailwindcss": "2.0.2"
   },
   "license": "MIT"
 }

@@ -3,6 +3,7 @@ var { promisify } = require("util");
 var fs = require("fs");
 var sizeOf = promisify(require("image-size"));
 const makeDir = require("make-dir");
+
 import { compressImage } from "../components/compressImage.js";
 const convertImageToBase64 = (image) => {
   return fs.readFileSync(`${process.cwd()}${image}`, "base64");
@@ -56,11 +57,12 @@ const getImageAspectRatio = (image) => {
       });
   });
 };
+
 const getPlaceholder = async (image, imageFolder) => {
   let min = await resizeImage(image, imageFolder, 40);
-  // let placeholder = await convertImageToBase64(`${process.cwd()}/2.jpg`);
   return await convertImageToBase64(min);
 };
+
 export const getFluidImage = async (image) => {
   const temp = image.split("/");
   const imageName = temp.pop();
@@ -68,11 +70,15 @@ export const getFluidImage = async (image) => {
   let imageObj = {};
   const sizes = [320, 640, 960, 1200, 1440, 2000];
   let dimensions = await getImageAspectRatio(image);
+
   imageObj.aspectRatio = (dimensions.width / dimensions.height).toFixed(2);
+
   imageObj.placeholder =
     `data:image/${dimensions.type};base64,` +
     (await getPlaceholder(imageName, imageFolder));
+
   imageObj.src = `./images/${imageName}`;
+
   let promises = sizes.map((width) => {
     if (dimensions.width >= width) {
       return resizeImage(imageName, imageFolder, width).then(() => {
@@ -80,10 +86,10 @@ export const getFluidImage = async (image) => {
       });
     }
   });
+
   // eslint-disable-next-line no-undef
   imageObj.srcset = await Promise.all(promises).then((results) => {
     return results.join(", ");
   });
   return imageObj;
-  // return await resizeImage(`${process.cwd()}/123.jpg`, 40);
 };

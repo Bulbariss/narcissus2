@@ -1,16 +1,19 @@
 var fs = require("fs");
 const util = require("util");
 const writeFile = util.promisify(fs.writeFile);
+const imagemin = require("imagemin");
+const imageminMozjpeg = require("imagemin-mozjpeg");
+const imageminPngquant = require("imagemin-pngquant");
 
 export const compressImage = (path) => {
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) => {
-    require("imagemin")([path], {
+    imagemin([path], {
       plugins: [
-        require("imagemin-mozjpeg")({
-          quality: 70,
+        imageminMozjpeg({
+          quality: 72,
         }),
-        require("imagemin-pngquant")({
+        imageminPngquant({
           speed: 4,
           quality: [0.6, 0.8],
         }),
