@@ -3,7 +3,6 @@ import Head from "next/head";
 export default function SEO({ seo, title }) {
   return (
     <Head>
-      <html lang={seo.siteLanguage} />
       <title>{`${title} | ${seo.siteTitle}`}</title>
       <meta name="description" content={seo.siteDescription} />
       <meta property="og:description" content={seo.siteDescription} />
@@ -110,6 +109,7 @@ export default function SEO({ seo, title }) {
         href="/favicon/safari-pinned-tab.svg"
         color="#000000"
       />
+      <html lang={seo.siteLanguage} />
     </Head>
   );
 }
