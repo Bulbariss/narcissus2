@@ -21,6 +21,7 @@ export default function SEO({ seo, title }) {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="keywords" content={seo.siteKeywords} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Favicons */}
         <link
