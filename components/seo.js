@@ -2,7 +2,8 @@ import Head from "next/head";
 
 export default function SEO({ seo, title }) {
   return (
-    <Head lang={seo.siteLanguage}>
+    <Head>
+      <html lang={seo.siteLanguage} />
       <title>{`${title} | ${seo.siteTitle}`}</title>
       <meta name="description" content={seo.siteDescription} />
       <meta property="og:description" content={seo.siteDescription} />
@@ -13,8 +14,8 @@ export default function SEO({ seo, title }) {
       <meta property="og:url" content={seo.siteUrl} />
       <meta property="og:site_name" content={seo.siteTitle} />
       <meta property="twitter:card" content="summary" />
-      <meta property="twitter:image" content={seo.socialCover.source_url} />
-      <meta property="og:image" content={seo.socialCover.source_url} />
+      <meta property="twitter:image" content={seo.socialCover.sourceUrl} />
+      <meta property="og:image" content={seo.socialCover.sourceUrl} />
       <meta property="og:image:alt" content={seo.siteTitle} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
