@@ -7,12 +7,7 @@ export default function Index({ seo }) {
   return (
     <>
       <Layout>
-        <SEO
-          title={seo.title}
-          description={seo.description}
-          pathname="test"
-          post={seo}
-        />
+        <SEO title={"index"} seo={seo} />
         <section className="relative flex flex-col items-center justify-center w-screen min-h-screen space-y-12">
           <h1 className="z-10 text-5xl font-black text-black">Home</h1>
           <Link href="/testing">

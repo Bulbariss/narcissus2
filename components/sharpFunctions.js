@@ -66,7 +66,7 @@ const getPlaceholder = async (image, imageFolder) => {
 export const getFluidImage = async (image) => {
   const temp = image.split("/");
   const imageName = temp.pop();
-  const imageFolder = "/public" + temp.join("/");
+  const imageFolder = temp.join("/");
   let imageObj = {};
   const sizes = [320, 640, 960, 1200, 1440, 2000];
   let dimensions = await getImageAspectRatio(image);

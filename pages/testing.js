@@ -3,19 +3,14 @@ import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
 import BackgroundImage from "../components/BackgroundImage3";
-import getUnsplashImage from "../components/getImage";
+import downloadImage from "../components/getImage";
 import { getFluidImage } from "../components/sharpFunctions";
-// import Image from "next/image";
+
 export default function Index({ seo, post, test }) {
   return (
     <>
       <Layout>
-        <SEO
-          title={post.title}
-          description={seo.description}
-          pathname="test"
-          post={seo}
-        />
+        <SEO title={post.title} seo={seo} />
         <BackgroundImage image={test}>
           <h1 className="z-10 text-5xl font-black text-gray-100">
             {post.heroText}
@@ -41,13 +36,11 @@ export async function getStaticProps() {
   await Promise.all(
     Object.values(data.testing.getContent).map(async (value) => {
       if (typeof value === "object" && "sourceUrl" in value) {
-        value.path = await getUnsplashImage(value.sourceUrl);
+        value.path = await downloadImage(value.sourceUrl);
       }
     })
   );
-  const data3 = await getFluidImage(
-    "/images/uploads_2021_01_pexels-mohamed-sarim-1033729-scaled.jpg"
-  );
+  const data3 = await getFluidImage(data.testing.getContent.heroImage.path);
   return {
     props: {
       post: data.testing.getContent,

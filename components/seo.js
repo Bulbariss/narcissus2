@@ -1,125 +1,114 @@
-import PropTypes from "prop-types";
-import React from "react";
-import Helmet from "react-helmet";
-// import image from "../social_cover.jpg";
-import { getSiteMetadata } from "../lib/api";
+import Head from "next/head";
 
-function SEO({ description, lang, meta, keywords, title, pathname, post }) {
-  const metaImage = post ? post.socialCover.sourceUrl : null;
-  const metaDescription = description || post.description;
-  const metaUrl = `${post?.siteUrl}${pathname}`;
+export default function SEO({ seo, title }) {
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:url`,
-          content: metaUrl,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:creator`,
-          content: post?.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
+    <Head lang={seo.siteLanguage}>
+      <title>{`${title} | ${seo.siteTitle}`}</title>
+      <meta name="description" content={seo.siteDescription} />
+      <meta property="og:description" content={seo.siteDescription} />
+      <meta property="twitter:description" content={seo.siteDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="twitter:title" content={title} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={seo.siteUrl} />
+      <meta property="og:site_name" content={seo.siteTitle} />
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:image" content={seo.socialCover.source_url} />
+      <meta property="og:image" content={seo.socialCover.source_url} />
+      <meta property="og:image:alt" content={seo.siteTitle} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="keywords" content={seo.siteKeywords} />
 
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  name: `twitter:image`,
-                  content: metaImage,
-                },
-                {
-                  property: `og:image`,
-                  content: metaImage,
-                },
-                {
-                  property: `og:image:alt`,
-                  content: title,
-                },
-                {
-                  property: "og:image:width",
-                  content: "1200px",
-                },
-                {
-                  property: "og:image:height",
-                  content: "630px",
-                },
-                {
-                  name: `twitter:card`,
-                  content: "summary",
-                },
-              ]
-            : [
-                {
-                  name: `twitter:card`,
-                  content: `summary`,
-                },
-              ]
-        )
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-      title={title}
-      titleTemplate={`%s | ${post?.title}`}
-    ></Helmet>
+      {/* Favicons */}
+      <link
+        rel="apple-touch-icon"
+        sizes="57x57"
+        href="/favicon/favicon-57x57.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="60x60"
+        href="/favicon/favicon-60x60.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="72x72"
+        href="/favicon/favicon-72x72.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href="/favicon/favicon-76x76.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="114x114"
+        href="/favicon/favicon-114x114.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="120x120"
+        href="/favicon/favicon-120x120.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="144x144"
+        href="/favicon/favicon-144x144.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="152x152"
+        href="/favicon/favicon-152x152.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/favicon/favicon-180x180.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon/favicon-16x16.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon/favicon-96x96.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/favicon/favicon-192x192.png"
+      />
+      <link
+        rel="shortcut icon"
+        type="image/x-icon"
+        href="/favicon/favicon.ico"
+      />
+      <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta
+        name="msapplication-TileImage"
+        content="/favicon/favicon-144x144.png"
+      />
+      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+      <link rel="manifest" href="/favicon/manifest.json" />
+      <meta name="theme-color" content="#ffffff" />
+      <link
+        rel="mask-icon"
+        href="/favicon/safari-pinned-tab.svg"
+        color="#000000"
+      />
+    </Head>
   );
 }
-
-SEO.defaultProps = {
-  lang: `en`,
-  keywords: [],
-  meta: [],
-};
-
-SEO.propTypes = {
-  description: PropTypes.string.isRequired,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  lang: PropTypes.string.isRequired,
-  pathname: PropTypes.string.isRequired,
-  meta: PropTypes.array,
-  title: PropTypes.string.isRequired,
-};
-
-export async function getStaticProps() {
-  const data = await getSiteMetadata();
-  return {
-    props: {
-      post: data,
-    },
-  };
-}
-
-export default SEO;

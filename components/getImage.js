@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 import { compressImage } from "./compressImage.js";
 const request = require("request");
 
@@ -25,13 +25,13 @@ async function download(url, name) {
   });
 }
 
-const getUnsplashImage = async (photo) => {
+const downloadImage = async (photo) => {
   const name = photo.split("wp-content/")[1].replace(/\//g, "_");
 
   // eslint-disable-next-line no-undef
   return Promise.all([download(photo, name)]).then(() => {
-    return name;
+    return "/public/images/" + name;
   });
 };
 
-export default getUnsplashImage;
+export default downloadImage;
