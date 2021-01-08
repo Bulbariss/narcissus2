@@ -7,19 +7,24 @@ export default function SEO({ seo, title }) {
       <Head>
         <title>{`${title} | ${seo.siteTitle}`}</title>
         <meta name="description" content={seo.siteDescription} />
+        
+        {/* Facebook / OpenGraph */}
         <meta property="og:description" content={seo.siteDescription} />
-        <meta property="twitter:description" content={seo.siteDescription} />
-        <meta property="og:title" content={title} />
-        <meta property="twitter:title" content={title} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={seo.siteUrl} />
         <meta property="og:site_name" content={seo.siteTitle} />
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:image" content={seo.socialCover.sourceUrl} />
+        <meta property="og:url" content={seo.siteUrl} />
+        <meta property="og:title" content={title} />
         <meta property="og:image" content={seo.socialCover.sourceUrl} />
         <meta property="og:image:alt" content={seo.siteTitle} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={seo.siteDescription} />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:image" content={seo.socialCover.sourceUrl} />
+
         <meta property="keywords" content={seo.siteKeywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
