@@ -1,13 +1,16 @@
+import { useEffect } from "react";
 import Head from "next/head";
 
 export default function SEO({ seo, title }) {
+  useEffect(() => {
+    document.querySelector("html").lang = seo.siteLanguage;
+  }, []);
   return (
     <>
-      <html lang={seo.siteLanguage} />
       <Head>
         <title>{`${title} | ${seo.siteTitle}`}</title>
         <meta name="description" content={seo.siteDescription} />
-        
+
         {/* Facebook / OpenGraph */}
         <meta property="og:description" content={seo.siteDescription} />
         <meta property="og:type" content="website" />
