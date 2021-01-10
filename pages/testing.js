@@ -2,9 +2,9 @@ import Link from "next/link";
 import Layout from "../components/layout";
 import { getTestingPage, getSiteMetadata } from "../lib/api";
 import SEO from "../components/seo";
-import BackgroundImage from "../components/BackgroundImage3";
-import downloadImage from "../components/getImage";
-import { getFluidImage } from "../components/sharpFunctions";
+import BackgroundImage from "../components/resp-image/BackgroundImage";
+import downloadImage from "../components/resp-image/getImage";
+import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
 export default function Index({ seo, post, test }) {
   return (

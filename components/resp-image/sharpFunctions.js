@@ -3,8 +3,8 @@ var { promisify } = require("util");
 var fs = require("fs");
 var sizeOf = promisify(require("image-size"));
 const makeDir = require("make-dir");
+import { compressImage } from "./compressImage.js";
 
-import { compressImage } from "../components/compressImage.js";
 const convertImageToBase64 = (image) => {
   return fs.readFileSync(`${process.cwd()}${image}`, "base64");
 };
