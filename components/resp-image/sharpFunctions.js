@@ -67,6 +67,7 @@ export const getFluidImage = async (image) => {
   const temp = image.split("/");
   const imageName = temp.pop();
   const imageFolder = temp.join("/");
+  const imageDestination = imageFolder.split("/public").pop();
   let imageObj = {};
   const sizes = [320, 640, 960, 1200, 1440, 2000];
   let dimensions = await getImageAspectRatio(image);
@@ -77,12 +78,12 @@ export const getFluidImage = async (image) => {
     `data:image/${dimensions.type};base64,` +
     (await getPlaceholder(imageName, imageFolder));
 
-  imageObj.src = `./images/${imageName}`;
+  imageObj.src = `.${imageDestination}/${imageName}`;
 
   let promises = sizes.map((width) => {
     if (dimensions.width >= width) {
       return resizeImage(imageName, imageFolder, width).then(() => {
-        return `./images/${width}/${imageName} ${width}w`;
+        return `.${imageDestination}/${width}/${imageName} ${width}w`;
       });
     }
   });

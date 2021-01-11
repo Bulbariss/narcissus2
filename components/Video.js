@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
-import Vid from "../public/images/main.mp4";
 import BackgroundImage from "../components/resp-image/BackgroundImage";
 import useIntersect from "../components/utils/useIntersect";
-import Cover from "../public/images/cover.jpg";
 
 const Video = ({ image }) => {
   const [ref, entry] = useIntersect({
@@ -27,7 +25,7 @@ const Video = ({ image }) => {
           className={"react-player"}
           onReady={() => setReady(true)}
           playing={entry.isIntersecting && ready && play}
-          url={Vid}
+          url="/images/main.mp4"
           height={"auto"}
           width={"auto"}
           playsinline
@@ -37,7 +35,7 @@ const Video = ({ image }) => {
         {!play && (
           <div
             className="absolute top-0 z-20 w-full h-full bg-cover video-cover"
-            style={{ backgroundImage: `url(${Cover})` }}
+            style={{ backgroundImage: `url(/images/cover.jpg)` }}
           >
             <button
               className="absolute center-xy"

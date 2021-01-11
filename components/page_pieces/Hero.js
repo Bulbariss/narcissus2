@@ -1,5 +1,4 @@
 import React from "react";
-import Name from "../../public/images/2.png";
 
 import BackgroundImage from "../../components/resp-image/BackgroundImage";
 
@@ -64,7 +63,7 @@ const Hero = ({ isLandscape, Test2, Test }) => {
         <div className="z-10 flex flex-col max-w-2xl px-4 text-white md:px-0 hero-main">
           <h1 className="invisible">Narcissus</h1>
           <img
-            src={Name}
+            src="/images/2.png"
             alt="Narcissus"
             rel="preload"
             className="w-full h-auto select-none"

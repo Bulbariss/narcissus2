@@ -15,7 +15,6 @@ import iosInnerHeight from "ios-inner-height";
 import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
 // Images
-import psychologist from "../public/images/psychologist.jpg";
 
 export default function Index({
   parallaxOne,
@@ -59,10 +58,6 @@ export default function Index({
         description="Арт-проект, в котором Koshka Neon вместе с певицей Сабриной и певицей Mirele поднимают проблему абьюзивных отношений."
         pathname="/"
       /> */}
-      <div
-        id="canvas"
-        className="fixed top-0 left-0 right-0 z-10 w-screen true-height"
-      />
       <Hero Test2={Test2} Test={Test} isLandscape={isLandscape} />
       <SecondScreen />
       <Video image={videoCover} />
@@ -72,7 +67,7 @@ export default function Index({
         heading="Мнение Психолога"
         text={textOne}
         name="Ирина Лернер"
-        img={psychologist}
+        img="/images/psychologist.jpg"
       />
       <Parallax image={parallaxTwo} />
       <Text text={textTwo} image={bgTwo} />
@@ -86,32 +81,32 @@ export default function Index({
 
 export async function getStaticProps() {
   const parallaxOne = await getFluidImage(
-    "../public/images/parallax/ParallaxOne.jpg"
+    "/public/images/parallax/ParallaxOne.jpg"
   );
   const parallaxTwo = await getFluidImage(
-    "../public/images/parallax/ParallaxTwo.jpg"
+    "/public/images/parallax/ParallaxTwo.jpg"
   );
   const parallaxThree = await getFluidImage(
-    "../public/images/parallax/ParallaxThree.jpg"
+    "/public/images/parallax/ParallaxThree.jpg"
   );
   const parallaxFour = await getFluidImage(
-    "../public/images/parallax/ParallaxFour.jpg"
+    "/public/images/parallax/ParallaxFour.jpg"
   );
   const bgOne = await getFluidImage(
-    "../public/images/backgrounds/TextBlockOne.jpg"
+    "/public/images/backgrounds/TextBlockOne.jpg"
   );
   const bgTwo = await getFluidImage(
-    "../public/images/backgrounds/TextBlockTwo.jpg"
+    "/public/images/backgrounds/TextBlockTwo.jpg"
   );
   const bgThree = await getFluidImage(
-    "../public/images/backgrounds/TextBlockThree.jpg"
+    "/public/images/backgrounds/TextBlockThree.jpg"
   );
   const bgFour = await getFluidImage(
-    "../public/images/backgrounds/TextBlockFour.jpg"
+    "/public/images/backgrounds/TextBlockFour.jpg"
   );
-  const videoCover = await getFluidImage("../public/images/col.jpg");
-  const Test = await getFluidImage("../public/images/hero/Hero-Landscape.jpg");
-  const Test2 = await getFluidImage("../public/images/hero/Hero-Portrait.jpg");
+  const videoCover = await getFluidImage("/public/images/col.jpg");
+  const Test = await getFluidImage("/public/images/hero/Hero-Landscape.jpg");
+  const Test2 = await getFluidImage("/public/images/hero/Hero-Portrait.jpg");
 
   //   const data3 = getFluidImage getFluidImage(data.testing.getContent.heroImage.path);
   return {
