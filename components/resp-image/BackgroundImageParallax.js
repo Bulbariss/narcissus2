@@ -28,7 +28,7 @@ export default function BackgroundImageParallax({ image, children, alt }) {
             style={{
               backgroundImage: `url("${image.placeholder}")`,
             }}
-            className={`bg-image w-full h-full z-10 delay-200`}
+            className={`bg-image w-full h-full z-10 delay-200 placeholder`}
           ></div>
         </div>
         <picture className="absolute top-0 left-0 w-full h-full select-none">
@@ -45,6 +45,11 @@ export default function BackgroundImageParallax({ image, children, alt }) {
         {children}
       </div>
       <style jsx>{`
+        .placeholder {
+          background-size: 100vmax 250vmax;
+          background-position: center;
+          transform: scaleY(2);
+        }
         .nnn12 {
           will-change: auto;
           transform: translate3d(0);
