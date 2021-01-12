@@ -22,7 +22,7 @@ const Parallax = ({ image }) => {
             z-index: -1;
           }
           .ttt {
-            transform: scaleY(0.5)
+            transform: scaleY(0.5);
             height: 600vh;
             margin-top: -300vh;
           }

@@ -34,6 +34,7 @@ export default function BackgroundImageParallax({ image, children, alt }) {
         <picture className="absolute top-0 left-0 w-full h-full select-none">
           <source srcSet={image.srcset} type="image/jpeg" />
           <img
+            loading="lazy"
             onLoad={() => imageLoaded()}
             className="object-cover w-full h-full onload"
             src={image.src}
@@ -45,6 +46,8 @@ export default function BackgroundImageParallax({ image, children, alt }) {
       </div>
       <style jsx>{`
         .nnn12 {
+          will-change: auto;
+          transform: translate3d(0);
           backface-visibility: hidden;
           position: sticky;
           top: 50%;

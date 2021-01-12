@@ -14,6 +14,35 @@ html {
   -moz-osx-font-smoothing: greyscale;
   text-rendering: optimizeLegibility;
 }
+/* BG */
+.bg-image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(24px); /* apply the blur */
+  pointer-events: none; /* make the pseudo class click-through */
+}
+
+.bg-image {
+  position: relative;
+  background: no-repeat center center;
+  background-size: cover;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+}
+.bg-image.loaded {
+  opacity: 0;
+}
+
+.blur-up {
+  transition-duration: 800ms;
+  opacity: 0;
+}
+.blur-up.loaded {
+  opacity: 0.99;
+}
+/* BG */
 
 video,
 .video-cover {

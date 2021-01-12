@@ -22,7 +22,7 @@ const Video = ({ image }) => {
       >
         <ReactPlayer
           id="react-player"
-          className={"react-player"}
+          className={"react-player relative"}
           onReady={() => setReady(true)}
           playing={entry.isIntersecting && ready && play}
           url="/images/main.mp4"
