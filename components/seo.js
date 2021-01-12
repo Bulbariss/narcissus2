@@ -1,34 +1,40 @@
 import { useEffect } from "react";
 import Head from "next/head";
 
-export default function SEO({ seo, title }) {
+export default function SEO() {
+  const description =
+    "Арт-проект, в котором Koshka Neon вместе с певицей Сабриной и певицей Mirele поднимают проблему абьюзивных отношений.";
+  const title = "Главная";
   useEffect(() => {
-    document.querySelector("html").lang = seo.siteLanguage;
+    document.querySelector("html").lang = "ru";
   }, []);
   return (
     <>
       <Head>
-        <title>{`${title} | ${seo.siteTitle}`}</title>
-        <meta name="description" content={seo.siteDescription} />
+        <title>{`${title} | Narcissus`}</title>
+        <meta name="description" content={description} />
 
         {/* Facebook / OpenGraph */}
-        <meta property="og:description" content={seo.siteDescription} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={seo.siteTitle} />
-        <meta property="og:url" content={seo.siteUrl} />
+        <meta property="og:site_name" content="Narcissus" />
+        <meta property="og:url" content="Narcissus" />
         <meta property="og:title" content={title} />
-        <meta property="og:image" content={seo.socialCover.sourceUrl} />
-        <meta property="og:image:alt" content={seo.siteTitle} />
+        <meta property="og:image" content="../public/images/social_cover.jpg" />
+        <meta property="og:image:alt" content="Narcissus" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
         {/* Twitter */}
         <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={seo.siteDescription} />
+        <meta property="twitter:description" content={description} />
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:image" content={seo.socialCover.sourceUrl} />
+        <meta
+          property="twitter:image"
+          content="../public/images/social_cover.jpg"
+        />
 
-        <meta property="keywords" content={seo.siteKeywords} />
+        <meta property="keywords" content="Narcissus" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Favicons */}
