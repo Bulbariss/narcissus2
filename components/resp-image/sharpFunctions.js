@@ -10,6 +10,7 @@ const convertImageToBase64 = (image) => {
 };
 
 const makeDirectory = (path) => {
+  console.log("making" + path);
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) => {
     makeDir(path)
@@ -23,10 +24,10 @@ const makeDirectory = (path) => {
   });
 };
 
-const resizeImage = async (image, imageFolder, width) => {
-  await makeDirectory(process.cwd() + imageFolder + "/" + width);
-  const path = `${process.cwd()}${imageFolder}/${width}/${image}`;
-
+const resizeImage = async (image, imageFolder, processedImagePath, width) => {
+  await makeDirectory(process.cwd() + processedImagePath + "/" + width);
+  const path = `${process.cwd()}${processedImagePath}/${width}/${image}`;
+  console.log("path = " + path);
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) => {
     sharp(`${process.cwd()}${imageFolder}/${image}`)
@@ -34,7 +35,7 @@ const resizeImage = async (image, imageFolder, width) => {
       .toFile(path)
       .then(() => {
         compressImage(path).then(() => {
-          resolve(`${imageFolder}/${width}/${image}`);
+          resolve(`${processedImagePath}/${width}/${image}`);
         });
       })
       .catch((err) => {
@@ -58,8 +59,8 @@ const getImageAspectRatio = (image) => {
   });
 };
 
-const getPlaceholder = async (image, imageFolder) => {
-  let min = await resizeImage(image, imageFolder, 40);
+const getPlaceholder = async (image, imageFolder, processedImagePath) => {
+  let min = await resizeImage(image, imageFolder, processedImagePath, 40);
   return await convertImageToBase64(min);
 };
 
@@ -67,7 +68,10 @@ export const getFluidImage = async (image) => {
   const temp = image.split("/");
   const imageName = temp.pop();
   const imageFolder = temp.join("/");
-  const imageDestination = imageFolder.split("/public").pop();
+  const processedImagePath =
+    "/.next/static" + imageFolder.split("/public").pop();
+  // const imageDestination = imageFolder.split("/public").pop();
+  const imageDestination = "/_next/static/images";
   let imageObj = {};
   const sizes = [320, 640, 960, 1200, 1440, 2000];
   let dimensions = await getImageAspectRatio(image);
@@ -76,14 +80,23 @@ export const getFluidImage = async (image) => {
 
   imageObj.placeholder =
     `data:image/${dimensions.type};base64,` +
-    (await getPlaceholder(imageName, imageFolder));
+    (await getPlaceholder(imageName, imageFolder, processedImagePath));
 
-  imageObj.src = `.${imageDestination}/${imageName}`;
+  imageObj.src = `.${imageDestination}${imageFolder
+    .split("/public/images")
+    .pop()}/${imageName}`;
 
   let promises = sizes.map((width) => {
     if (dimensions.width >= width) {
-      return resizeImage(imageName, imageFolder, width).then(() => {
-        return `.${imageDestination}/${width}/${imageName} ${width}w`;
+      return resizeImage(
+        imageName,
+        imageFolder,
+        processedImagePath,
+        width
+      ).then(() => {
+        return `.${imageDestination}${imageFolder
+          .split("/public/images")
+          .pop()}/${width}/${imageName} ${width}w`;
       });
     } else {
       return "";
