@@ -10,7 +10,6 @@ const convertImageToBase64 = (image) => {
 };
 
 const makeDirectory = (path) => {
-  console.log("making" + path);
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) => {
     makeDir(path)
@@ -27,7 +26,6 @@ const makeDirectory = (path) => {
 const resizeImage = async (image, imageFolder, processedImagePath, width) => {
   await makeDirectory(process.cwd() + processedImagePath + "/" + width);
   const path = `${process.cwd()}${processedImagePath}/${width}/${image}`;
-  console.log("path = " + path);
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) => {
     sharp(`${process.cwd()}${imageFolder}/${image}`)
@@ -82,9 +80,7 @@ export const getFluidImage = async (image) => {
     `data:image/${dimensions.type};base64,` +
     (await getPlaceholder(imageName, imageFolder, processedImagePath));
 
-  imageObj.src = `.${imageDestination}${imageFolder
-    .split("/public/images")
-    .pop()}/${imageName}`;
+  imageObj.src = `.${image.split("/public").pop()}`;
 
   let promises = sizes.map((width) => {
     if (dimensions.width >= width) {

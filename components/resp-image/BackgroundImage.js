@@ -1,6 +1,12 @@
 import { useRef, useEffect } from "react";
 
-export default function BackgroundImage({ image, children, alt, className }) {
+export default function BackgroundImage({
+  image,
+  children,
+  alt,
+  className,
+  loading = "lazy",
+}) {
   let imageRef = useRef();
 
   function imageLoaded() {
@@ -34,6 +40,7 @@ export default function BackgroundImage({ image, children, alt, className }) {
         <picture className="absolute top-0 left-0 w-full h-full select-none">
           <source srcSet={image.srcset} type="image/jpeg" />
           <img
+            loading={loading}
             onLoad={() => imageLoaded()}
             className="object-cover w-full h-full onload"
             src={image.src}
