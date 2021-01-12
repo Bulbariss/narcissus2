@@ -85,6 +85,8 @@ export const getFluidImage = async (image) => {
       return resizeImage(imageName, imageFolder, width).then(() => {
         return `.${imageDestination}/${width}/${imageName} ${width}w`;
       });
+    } else {
+      return "";
     }
   });
 

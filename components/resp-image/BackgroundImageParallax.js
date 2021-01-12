@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export default function BackgroundImage({ image, children, alt }) {
+export default function BackgroundImageParallax({ image, children, alt }) {
   let imageRef = useRef();
   function imageLoaded() {
     let imagePlaceholder = imageRef.current.getElementsByClassName(
@@ -21,7 +21,7 @@ export default function BackgroundImage({ image, children, alt }) {
     <>
       <div
         ref={imageRef}
-        className="relative flex flex-col items-center justify-center w-screen min-h-screen"
+        className="relative flex flex-col items-center justify-center w-screen min-h-screen nnn12"
       >
         <div className="absolute top-0 left-0 w-full h-full">
           <div
@@ -37,11 +37,27 @@ export default function BackgroundImage({ image, children, alt }) {
             onLoad={() => imageLoaded()}
             className="object-cover w-full h-full onload"
             src={image.src}
+            style={{ transform: "scaleY(2)" }}
             alt={alt ? alt : ""}
           />
         </picture>
         {children}
       </div>
+      <style jsx>{`
+        .nnn12 {
+          backface-visibility: hidden;
+          position: sticky;
+          top: 50%;
+        }
+        @media not all and (min-resolution: 0.001dpcm) {
+          @supports (-webkit-appearance: none) {
+            .nnn12 {
+              top: 0;
+              transform: translateY(150vh);
+            }
+          }
+        }
+      `}</style>
     </>
   );
 }

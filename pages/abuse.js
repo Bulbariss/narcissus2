@@ -11,7 +11,6 @@ import { textOne, textTwo, textThree, textFour } from "../components/Texts";
 import SecondScreen from "../components/page_pieces/SecondScreen";
 import Video from "../components/Video";
 import Parallax from "../components/Parallax";
-import iosInnerHeight from "ios-inner-height";
 import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
 // Images
@@ -29,6 +28,7 @@ export default function Index({
   Test2,
   Test,
 }) {
+  console.log("object");
   const [isLandscape, setIsLandscape] = useState(false);
   const ori =
     typeof window !== `undefined` &&
@@ -42,9 +42,6 @@ export default function Index({
   }
 
   useEffect(() => {
-    document
-      .querySelector("body")
-      .style.setProperty("--height", iosInnerHeight() + "px");
     setTimeout(() => {}, 200);
     setIsLandscape(ori.matches);
 

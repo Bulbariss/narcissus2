@@ -6,7 +6,6 @@
 @tailwind utilities;
 
 html {
-  height: 100%;
   background: #212121;
 }
 
@@ -44,21 +43,12 @@ textarea::-webkit-input-placeholder {
   color: #52606d;
   line-height: 1.5;
 } */
-body {
-  --height: 100vh;
-}
-
-.true-height {
-  height: var(--height);
-}
 
 ::selection {
   background: #ccff00;
   color: #000;
   text-shadow: none;
 }
-
-
 
 /* Classes */
 

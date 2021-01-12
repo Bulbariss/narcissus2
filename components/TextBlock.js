@@ -4,14 +4,14 @@ import BackgroundImage from "../components/resp-image/BackgroundImage";
 const TextBlock = ({ heading, name, text, img, image }) => {
   return (
     <BackgroundImage
-      // className="relative bg-cover"
+      className="relative bg-cover"
       // Tag="section"
       // alt="Обложка"
       image={image}
       // fadeIn="soft"
       // durationFadeIn={300}
     >
-      <div className="px-4 py-16 mx-auto md:px-0 max-w-text">
+      <div className="relative z-10 px-4 py-16 mx-auto md:px-0 max-w-text">
         <p className="pb-6 H1 bbb">{heading}</p>
         <div className="flex flex-row items-center justify-between pb-8">
           <div className="flex items-center">
@@ -42,7 +42,7 @@ const TextBlock = ({ heading, name, text, img, image }) => {
             </a>
           </div>
         </div>
-        <p className="max-w-full m-0 text-lg text-justify whitespace-pre-wrap P">
+        <p className="max-w-full m-0 text-lg text-justify text-white whitespace-pre-wrap P">
           {text}
         </p>
       </div>

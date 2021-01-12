@@ -4,17 +4,17 @@ import BackgroundImage from "../components/resp-image/BackgroundImage";
 const TextLast = ({ text, image }) => {
   return (
     <BackgroundImage
-      // className="w-full pt-16 pb-6 bg-cover "
+      className="w-full pt-16 pb-6 bg-cover "
       // Tag="section"
       // alt="Обложка"
       image={image}
       // fadeIn="soft"
       // durationFadeIn={300}
     >
-      <p className="max-w-full px-4 m-0 mx-auto text-lg text-justify whitespace-pre-wrap md:px-0 P max-w-text">
+      <p className="relative max-w-full px-4 m-0 mx-auto text-lg text-justify text-white whitespace-pre-wrap md:px-0 P max-w-text">
         {text}
       </p>
-      <div className="top-0 z-10 flex flex-col w-screen h-auto pt-20">
+      <div className="relative top-0 z-10 flex flex-col w-screen h-auto pt-20">
         <div
           className="flex justify-around w-full max-w-80"
           style={{ color: "#cf0" }}

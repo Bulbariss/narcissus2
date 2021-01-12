@@ -2,7 +2,7 @@ import React from "react";
 
 const SecondScreen = () => {
   return (
-    <section className="px-4 py-32 bg-gray-900 md:text-center">
+    <section className="relative px-4 py-32 bg-gray-900 md:text-center color-white">
       <h2 className="pb-6 H1 bbb">О чем наш проект</h2>
       <p className="mx-auto text-gray-300 max-w-text P">
         Проект состоит из атмосферного mood-видео, серии фото-коллажей и
