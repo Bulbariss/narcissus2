@@ -20,7 +20,7 @@ export default function SEO() {
         <meta property="og:site_name" content="Narcissus" />
         <meta property="og:url" content="Narcissus" />
         <meta property="og:title" content={title} />
-        <meta property="og:image" content="../public/images/social_cover.jpg" />
+        <meta property="og:image" content="./images/social_cover.jpg" />
         <meta property="og:image:alt" content="Narcissus" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -29,10 +29,7 @@ export default function SEO() {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:card" content="summary" />
-        <meta
-          property="twitter:image"
-          content="../public/images/social_cover.jpg"
-        />
+        <meta property="twitter:image" content="./images/social_cover.jpg" />
 
         <meta property="keywords" content="Narcissus" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
