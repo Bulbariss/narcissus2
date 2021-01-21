@@ -9,8 +9,8 @@ import Text from "../components/Text";
 import TextLast from "../components/TextLast";
 import { textOne, textTwo, textThree, textFour } from "../components/Texts";
 import SecondScreen from "../components/page_pieces/SecondScreen";
+import Parallax from "../components/resp-image/BackgroundImageParallax2";
 import Video from "../components/Video";
-import Parallax from "../components/Parallax";
 import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
 // Images
