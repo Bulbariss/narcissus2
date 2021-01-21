@@ -16,10 +16,6 @@ import { getFluidImage } from "../components/resp-image/sharpFunctions";
 // Images
 
 export default function Index({
-  parallaxOne,
-  parallaxTwo,
-  parallaxThree,
-  parallaxFour,
   bgOne,
   bgTwo,
   bgThree,
@@ -52,7 +48,7 @@ export default function Index({
       <Hero Test2={Test2} Test={Test} isLandscape={isLandscape} />
       <SecondScreen />
       <Video image={videoCover} />
-      <Parallax image={parallaxOne} />
+      <Parallax image="/images/parallax/ParallaxOne.jpg" />
       <TextBlock
         image={bgOne}
         heading="Мнение Психолога"
@@ -60,29 +56,17 @@ export default function Index({
         name="Ирина Лернер"
         img="/images/psychologist.jpg"
       />
-      <Parallax image={parallaxTwo} />
+      <Parallax image="/images/parallax/ParallaxTwo.jpg" />
       <Text text={textTwo} image={bgTwo} />
-      <Parallax image={parallaxThree} />
+      <Parallax image="/images/parallax/ParallaxThree.jpg" />
       <Text text={textThree} image={bgThree} />
-      <Parallax image={parallaxFour} />
+      <Parallax image="/images/parallax/ParallaxFour.jpg" />
       <TextLast text={textFour} image={bgFour} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const parallaxOne = await getFluidImage(
-    "/public/images/parallax/ParallaxOne.jpg"
-  );
-  const parallaxTwo = await getFluidImage(
-    "/public/images/parallax/ParallaxTwo.jpg"
-  );
-  const parallaxThree = await getFluidImage(
-    "/public/images/parallax/ParallaxThree.jpg"
-  );
-  const parallaxFour = await getFluidImage(
-    "/public/images/parallax/ParallaxFour.jpg"
-  );
   const bgOne = await getFluidImage(
     "/public/images/backgrounds/TextBlockOne.jpg"
   );
@@ -99,13 +83,8 @@ export async function getStaticProps() {
   const Test = await getFluidImage("/public/images/hero/Hero-Landscape.jpg");
   const Test2 = await getFluidImage("/public/images/hero/Hero-Portrait.jpg");
 
-  //   const data3 = getFluidImage getFluidImage(data.testing.getContent.heroImage.path);
   return {
     props: {
-      parallaxOne,
-      parallaxTwo,
-      parallaxThree,
-      parallaxFour,
       bgOne,
       bgTwo,
       bgThree,

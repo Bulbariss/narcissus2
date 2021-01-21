@@ -8,7 +8,7 @@ const Parallax = ({ image }) => {
               <div className="nnn">
                 <div
                   className="nnn2"
-                  style={{ backgroundImage: `url(${image.src})` }}
+                  style={{ backgroundImage: `url(${image})` }}
                 ></div>
               </div>
             </div>
@@ -53,7 +53,8 @@ const Parallax = ({ image }) => {
             height: 200vh;
             width: 100vw;
             position: sticky;
-            will-change: auto;
+            will-change: transform;
+            perspective: 1000;
             transform: translate3d(0);
             backface-visibility: hidden;
             top: 0;
