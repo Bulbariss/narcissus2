@@ -47,7 +47,7 @@ export default function BackgroundImage({
             alt={alt ? alt : ""}
           />
         </picture>
-        {children}
+        <div className="relative z-20">{children}</div>
       </div>
     </>
   );

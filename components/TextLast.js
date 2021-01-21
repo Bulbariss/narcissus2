@@ -4,7 +4,7 @@ import BackgroundImage from "../components/resp-image/BackgroundImage";
 const TextLast = ({ text, image }) => {
   return (
     <BackgroundImage
-      className="w-full pt-16 pb-6 bg-cover "
+      className="flex flex-col w-full min-h-screen pt-16 pb-6 bg-cover justify-items-auto"
       // Tag="section"
       // alt="Обложка"
       image={image}
