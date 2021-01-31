@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 // Components
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -13,8 +11,6 @@ import Parallax from "../components/resp-image/BackgroundImageParallax2";
 import Video from "../components/Video";
 import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
-// Images
-
 export default function Index({
   bgOne,
   bgTwo,
@@ -24,28 +20,11 @@ export default function Index({
   Test2,
   Test,
 }) {
-  const [isLandscape, setIsLandscape] = useState(false);
-  const ori =
-    typeof window !== `undefined` &&
-    window.matchMedia("(orientation: landscape)");
-
-  if (typeof window !== `undefined`) {
-    ori.addListener((e) => {
-      const darkModeOn = e.matches;
-      setIsLandscape(darkModeOn);
-    });
-  }
-
-  useEffect(() => {
-    setIsLandscape(ori.matches);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Layout>
       <SEO />
-      <Hero Test2={Test2} Test={Test} isLandscape={isLandscape} />
+      <Hero Test2={Test2} Test={Test}  />
       <SecondScreen />
       <Video image={videoCover} />
       <Parallax image="/images/parallax/ParallaxOne.jpg" />
