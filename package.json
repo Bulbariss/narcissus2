@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
+    "framer-motion": "^3.2.2-rc.1",
     "g": "^2.0.1",
     "image-size": "^0.9.3",
     "imagemin": "^7.0.1",
