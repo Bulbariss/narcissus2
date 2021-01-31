@@ -170,6 +170,9 @@ textarea::-webkit-input-placeholder {
 .bg-ivory {
   background-color: #f7f1e3;
 }
+.-z {
+  z-index: -1;
+}
 
 .h-1\/2 {
   height: 50%;
