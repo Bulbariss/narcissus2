@@ -2,6 +2,11 @@
 "":
   title: Koshka Neon
   link: https://www.koshkaneon.com/
+phycologyHeading: Мнение Психолога
+phycologyTextCoverTwo: images/textblocktwo.jpg
+vimeo:
+  title: VIMEO
+  link: https://vimeo.com/koshkaneon
 smi: СМИ О ПРОЕКТЕ
 linksToPublications:
   - title: VOGUE
@@ -27,7 +32,6 @@ parallaxOne: images/parallaxone.jpg
 parallaxTwo: images/parallaxtwo.jpg
 parallaxThree: images/parallaxthree.jpg
 parallaxFour: images/parallaxfour.jpg
-phycologyHeading: Мнение Психолога
 phycologyName: Ирина Лернер
 phycologyImage: images/psychologist.jpg
 phycologyFacebook: https://www.facebook.com/medvedzeva
@@ -102,20 +106,23 @@ phycologyTextFour: >-
 
   Любому человеку важно чувствовать себя «в порядке», что бы не случилось
 phycologyTextCoverOne: images/textblockone.jpg
-phycologyTextCoverTwo: images/textblocktwo.jpg
 phycologyTextCoverThree: images/textblockthree.jpg
 phycologyTextCoverFour: images/textblockfour.jpg
 copyright: © 2020
+socials:
+  - title: FACEBOOK
+    link: https://facebook.com/koshka.neon
+  - title: VIMEO
+    link: https://vimeo.com/koshkaneon
+  - title: INSTAGRAM
+    link: https://www.koshkaneon.com/
+koshkaNeon:
+  title: Koshka Neon
+  link: https://www.koshkaneon.com/
 facebook:
   title: FACEBOOK
   link: https://facebook.com/koshka.neon
-vimeo:
-  title: VIMEO
-  link: https://vimeo.com/koshkaneon
 instagram:
   title: INSTAGRAM
-  link: https://www.koshkaneon.com/
-koshkaNeon:
-  title: Koshka Neon
   link: https://www.koshkaneon.com/
 ---
