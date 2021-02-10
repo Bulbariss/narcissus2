@@ -28,10 +28,7 @@ parallaxTwo: images/parallaxtwo.jpg
 parallaxThree: images/parallaxthree.jpg
 parallaxFour: images/parallaxfour.jpg
 phycologyHeading: Мнение Психолога
-phycologyName: |-
-  Ирина Лернер
-
-  [](https://www.facebook.com/medvedzeva)
+phycologyName: Ирина Лернер
 phycologyImage: images/psychologist.jpg
 phycologyFacebook: https://www.facebook.com/medvedzeva
 phycologyTextOne: >-
