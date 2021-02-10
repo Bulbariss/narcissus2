@@ -1,4 +1,7 @@
 ---
+"":
+  title: Koshka Neon
+  link: https://www.koshkaneon.com/
 smi: СМИ О ПРОЕКТЕ
 linksToPublications:
   - title: VOGUE
@@ -9,7 +12,7 @@ linksToPublications:
     link: https://flacon-magazine.com/rubric/people/sabrina-bagirova-diskomfort-cast-moej-zizni
   - title: BURO24/7
     link: https://www.buro247.ru/culture/music/30-sep-2020-sabrina-interview.html
-narcissusLogo: images/2.png
+narcissusLogo: images/hero.svg
 heroText: Арт-проект, в котором Koshka Neon вместе с певицей Сабриной и певицей
   Mirele поднимают проблему абьюзивных отношений.
 heroVertical: images/hero-portrait.jpg
@@ -25,10 +28,7 @@ parallaxTwo: images/parallaxtwo.jpg
 parallaxThree: images/parallaxthree.jpg
 parallaxFour: images/parallaxfour.jpg
 phycologyHeading: Мнение Психолога
-phycologyName: |-
-  Ирина Лернер
-
-  [](https://www.facebook.com/medvedzeva)
+phycologyName: Ирина Лернер
 phycologyImage: images/psychologist.jpg
 phycologyFacebook: https://www.facebook.com/medvedzeva
 phycologyTextOne: >-
