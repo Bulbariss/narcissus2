@@ -115,7 +115,7 @@ vimeo:
 instagram:
   title: INSTAGRAM
   link: https://www.koshkaneon.com/
-"":
+koshkaNeon:
   title: Koshka Neon
   link: https://www.koshkaneon.com/
 ---

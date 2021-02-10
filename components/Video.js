@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import BackgroundImage from "../components/resp-image/BackgroundImage";
 import useIntersect from "../components/utils/useIntersect";
 
-const Video = ({ image }) => {
+const Video = ({ data, videoCover }) => {
   const [ref, entry] = useIntersect({
     threshold: 0.7,
   });
@@ -16,7 +16,7 @@ const Video = ({ image }) => {
         // className={`relative w-screen z-10`
         // Tag="div"
         // alt="Обложка"
-        image={image}
+        image={videoCover}
         // fadeIn="soft"
         // durationFadeIn={300}
       >
@@ -25,7 +25,7 @@ const Video = ({ image }) => {
           className={"react-player relative"}
           onReady={() => setReady(true)}
           playing={entry.isIntersecting && ready && play}
-          url="/images/main.mp4"
+          url={data.video}
           height={"auto"}
           width={"auto"}
           playsinline
@@ -35,7 +35,7 @@ const Video = ({ image }) => {
         {!play && (
           <div
             className="absolute top-0 z-20 w-full h-full bg-cover video-cover"
-            style={{ backgroundImage: `url(/images/cover.jpg)` }}
+            style={{ backgroundImage: `url(${data.videoCover})` }}
           >
             <button
               className="absolute center-xy"

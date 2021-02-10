@@ -5,7 +5,6 @@ import Hero from "../components/page_pieces/Hero";
 import TextBlock from "../components/TextBlock";
 import Text from "../components/Text";
 import TextLast from "../components/TextLast";
-import { textOne, textTwo, textThree, textFour } from "../components/Texts";
 import SecondScreen from "../components/page_pieces/SecondScreen";
 import Parallax from "../components/resp-image/BackgroundImageParallax2";
 import Video from "../components/Video";
@@ -19,48 +18,50 @@ export default function Index({
   videoCover,
   Test2,
   Test,
+  data,
 }) {
-
   return (
     <Layout>
       <SEO />
-      <Hero Test2={Test2} Test={Test}  />
-      <SecondScreen />
-      <Video image={videoCover} />
-      <Parallax image="/images/parallax/ParallaxOne.jpg" />
+      <Hero data={data} Test2={Test2} Test={Test} />
+      <SecondScreen data={data} />
+      <Video videoCover={videoCover} data={data} />
+      <Parallax image={data.parallaxOne} />
       <TextBlock
         image={bgOne}
-        heading="Мнение Психолога"
-        text={textOne}
-        name="Ирина Лернер"
-        img="/images/psychologist.jpg"
+        heading={data.phycologyHeading}
+        text={data.phycologyTextOne}
+        name={data.phycologyName}
+        img={data.phycologyImage}
       />
-      <Parallax image="/images/parallax/ParallaxTwo.jpg" />
-      <Text text={textTwo} image={bgTwo} />
-      <Parallax image="/images/parallax/ParallaxThree.jpg" />
-      <Text text={textThree} image={bgThree} />
-      <Parallax image="/images/parallax/ParallaxFour.jpg" />
-      <TextLast text={textFour} image={bgFour} />
+      <Parallax image={data.parallaxTwo} />
+      <Text text={data.phycologyTextTwo} image={bgTwo} />
+      <Parallax image={data.parallaxThree} />
+      <Text text={data.phycologyTextThree} image={bgThree} />
+      <Parallax image={data.parallaxFour} />
+      <TextLast text={data.phycologyTextFour} image={bgFour} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
+  const content = await import(`../cms/content/pages/home.md`);
+
   const bgOne = await getFluidImage(
-    "/public/images/backgrounds/TextBlockOne.jpg"
+    content.default.attributes.phycologyTextCoverOne
   );
   const bgTwo = await getFluidImage(
-    "/public/images/backgrounds/TextBlockTwo.jpg"
+    content.default.attributes.phycologyTextCoverTwo
   );
   const bgThree = await getFluidImage(
-    "/public/images/backgrounds/TextBlockThree.jpg"
+    content.default.attributes.phycologyTextCoverThree
   );
   const bgFour = await getFluidImage(
-    "/public/images/backgrounds/TextBlockFour.jpg"
+    content.default.attributes.phycologyTextCoverFour
   );
-  const videoCover = await getFluidImage("/public/images/col.jpg");
-  const Test = await getFluidImage("/public/images/hero/Hero-Landscape.jpg");
-  const Test2 = await getFluidImage("/public/images/hero/Hero-Portrait.jpg");
+  const videoCover = await getFluidImage(content.default.attributes.videoCover);
+  const Test = await getFluidImage(content.default.attributes.heroVertical);
+  const Test2 = await getFluidImage(content.default.attributes.heroHorizontal);
 
   return {
     props: {
@@ -71,6 +72,7 @@ export async function getStaticProps() {
       videoCover,
       Test2,
       Test,
+      data: content.default.attributes,
     },
   };
 }
