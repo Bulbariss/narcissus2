@@ -1,4 +1,7 @@
 ---
+"":
+  title: Koshka Neon
+  link: https://www.koshkaneon.com/
 smi: СМИ О ПРОЕКТЕ
 linksToPublications:
   - title: VOGUE
@@ -115,7 +118,7 @@ vimeo:
 instagram:
   title: INSTAGRAM
   link: https://www.koshkaneon.com/
-"":
+koshkaNeon:
   title: Koshka Neon
   link: https://www.koshkaneon.com/
 ---
