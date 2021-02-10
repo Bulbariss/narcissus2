@@ -63,6 +63,7 @@ const getPlaceholder = async (image, imageFolder, processedImagePath) => {
 };
 
 export const getFluidImage = async (image) => {
+  image = "/public/" + image;
   const temp = image.split("/");
   const imageName = temp.pop();
   const imageFolder = temp.join("/");

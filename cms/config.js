@@ -174,9 +174,9 @@ export default {
               widget: "string",
             },
             {
-              label: "Facebook",
-              name: "facebook",
-              widget: "object",
+              label: "Ссылки",
+              name: "socials",
+              widget: "list",
               fields: [
                 {
                   label: "Титл",
@@ -190,40 +190,7 @@ export default {
                 },
               ],
             },
-            {
-              label: "Vimeo",
-              name: "vimeo",
-              widget: "object",
-              fields: [
-                {
-                  label: "Титл",
-                  name: "title",
-                  widget: "string",
-                },
-                {
-                  label: "Ссылка",
-                  name: "link",
-                  widget: "string",
-                },
-              ],
-            },
-            {
-              label: "Instagram",
-              name: "instagram",
-              widget: "object",
-              fields: [
-                {
-                  label: "Титл",
-                  name: "title",
-                  widget: "string",
-                },
-                {
-                  label: "Ссылка",
-                  name: "link",
-                  widget: "string",
-                },
-              ],
-            },
+
             {
               label: "Koshka Neon",
               name: "koshkaNeon",
