@@ -33,7 +33,6 @@ const resizeImage = async (image, imageFolder, processedImagePath, width) => {
       .toFile(path)
       .then(() => {
         compressImage(path).then(() => {
-          console.log(image);
           resolve(`${processedImagePath}/${width}/${image}`);
         });
       })
