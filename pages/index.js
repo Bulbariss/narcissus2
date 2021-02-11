@@ -9,10 +9,10 @@ import SecondScreen from "../components/page_pieces/SecondScreen";
 import Parallax from "../components/resp-image/BackgroundImageParallax2";
 import Video from "../components/Video";
 
-export default function Index({ data }) {
+export default function Index({ data, seo }) {
   return (
     <Layout>
-      <SEO />
+      <SEO title="Главная" seo={seo} />
       <Hero data={data} />
       <SecondScreen data={data} />
       <Video data={data} />
@@ -39,10 +39,12 @@ export default function Index({ data }) {
 
 export async function getStaticProps() {
   const content = await import(`../cms/content/pages/home.md`);
+  const seo = await import(`../cms/content/config/seo.md`);
 
   return {
     props: {
       data: content.default.attributes,
+      seo: seo.default.attributes,
     },
   };
 }
