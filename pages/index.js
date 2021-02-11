@@ -36,9 +36,9 @@ export default function Index({
       /> */}
       <Parallax image={data.parallaxTwo} />
       {/* <Text text={data.phycologyTextTwo} image={bgTwo} /> */}
+      <Parallax image={data.parallaxFour} />
       <Parallax image={data.parallaxThree} />
       {/* <Text text={data.phycologyTextThree} image={bgThree} /> */}
-      <Parallax image={data.parallaxFour} />
       {/* <TextLast data={data} image={bgFour} /> */}
     </Layout>
   );
