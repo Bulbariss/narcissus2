@@ -16,7 +16,7 @@ collections:
       preview: false
     files:
       - label: SEO Сайта
-        name: site seo
+        name: siteSeo
         file: cms/content/config/seo.md
         fields:
           - label: URL Сайта
