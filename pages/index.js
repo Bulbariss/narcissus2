@@ -3,16 +3,16 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 // import Hero from "../components/page_pieces/Hero";
 // import TextBlock from "../components/TextBlock";
-// import Text from "../components/Text";
+import Text from "../components/Text";
 // import TextLast from "../components/TextLast";
 import SecondScreen from "../components/page_pieces/SecondScreen";
 import Parallax from "../components/resp-image/BackgroundImageParallax2";
 // import Video from "../components/Video";
-// import { getFluidImage } from "../components/resp-image/sharpFunctions";
+import { getFluidImage } from "../components/resp-image/sharpFunctions";
 
 export default function Index({
   // bgOne,
-  // bgTwo,
+  bgTwo,
   // bgThree,
   // bgFour,
   // videoCover,
@@ -35,7 +35,7 @@ export default function Index({
         img={data.phycologyImage}
       /> */}
       <Parallax image={data.parallaxTwo} />
-      {/* <Text text={data.phycologyTextTwo} image={bgTwo} /> */}
+      <Text text={data.phycologyTextTwo} image={bgTwo} />
       <Parallax image={data.parallaxFour} />
       <Parallax image={data.parallaxThree} />
       {/* <Text text={data.phycologyTextThree} image={bgThree} /> */}
@@ -50,9 +50,9 @@ export async function getStaticProps() {
   // const bgOne = await getFluidImage(
   //   content.default.attributes.phycologyTextCoverOne
   // );
-  // const bgTwo = await getFluidImage(
-  //   content.default.attributes.phycologyTextCoverTwo
-  // );
+  const bgTwo = await getFluidImage(
+    content.default.attributes.phycologyTextCoverTwo
+  );
   // const bgThree = await getFluidImage(
   //   content.default.attributes.phycologyTextCoverThree
   // );
@@ -66,7 +66,7 @@ export async function getStaticProps() {
   return {
     props: {
       // bgOne,
-      // bgTwo,
+      bgTwo,
       // bgThree,
       // bgFour,
       // videoCover,
