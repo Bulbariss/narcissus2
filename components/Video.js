@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import BackgroundImage from "../components/resp-image/BackgroundImage";
 import useIntersect from "../components/utils/useIntersect";
 
-const Video = ({ data, videoCover }) => {
+const Video = ({ data }) => {
   const [ref, entry] = useIntersect({
     threshold: 0.7,
   });
@@ -12,14 +12,7 @@ const Video = ({ data, videoCover }) => {
 
   return (
     <div ref={ref}>
-      <BackgroundImage
-        // className={`relative w-screen z-10`
-        // Tag="div"
-        // alt="Обложка"
-        image={videoCover}
-        // fadeIn="soft"
-        // durationFadeIn={300}
-      >
+      <BackgroundImage alt="Обложка" image={data.videoCover}>
         <ReactPlayer
           id="react-player"
           className={"react-player relative"}

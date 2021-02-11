@@ -1,45 +1,38 @@
 // Components
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-// import Hero from "../components/page_pieces/Hero";
-// import TextBlock from "../components/TextBlock";
+import Hero from "../components/page_pieces/Hero";
+import TextBlock from "../components/TextBlock";
 import Text from "../components/Text";
-// import TextLast from "../components/TextLast";
+import TextLast from "../components/TextLast";
 import SecondScreen from "../components/page_pieces/SecondScreen";
 import Parallax from "../components/resp-image/BackgroundImageParallax2";
-// import Video from "../components/Video";
-import { getFluidImage } from "../components/resp-image/sharpFunctions";
+import Video from "../components/Video";
 
-export default function Index({
-  // bgOne,
-  bgTwo,
-  // bgThree,
-  // bgFour,
-  // videoCover,
-  // Test2,
-  // Test,
-  data,
-}) {
+export default function Index({ data }) {
   return (
     <Layout>
       <SEO />
-      {/* <Hero data={data} Test2={Test2} Test={Test} /> */}
+      <Hero data={data} />
       <SecondScreen data={data} />
-      {/* <Video videoCover={videoCover} data={data} /> */}
+      <Video data={data} />
       <Parallax image={data.parallaxOne} />
-      {/* <TextBlock
-        image={bgOne}
+      <TextBlock
+        image={data.phycologyTextCoverOne}
         heading={data.phycologyHeading}
         text={data.phycologyTextOne}
         name={data.phycologyName}
         img={data.phycologyImage}
-      /> */}
+      />
       <Parallax image={data.parallaxTwo} />
-      <Text text={data.phycologyTextTwo} image={bgTwo} />
+      <Text text={data.phycologyTextTwo} image={data.phycologyTextCoverTwo} />
       <Parallax image={data.parallaxFour} />
+      <Text
+        text={data.phycologyTextThree}
+        image={data.phycologyTextCoverThree}
+      />
       <Parallax image={data.parallaxThree} />
-      {/* <Text text={data.phycologyTextThree} image={bgThree} /> */}
-      {/* <TextLast data={data} image={bgFour} /> */}
+      <TextLast data={data} image={data.phycologyTextCoverFour} />
     </Layout>
   );
 }
@@ -47,31 +40,8 @@ export default function Index({
 export async function getStaticProps() {
   const content = await import(`../cms/content/pages/home.md`);
 
-  // const bgOne = await getFluidImage(
-  //   content.default.attributes.phycologyTextCoverOne
-  // );
-  const bgTwo = await getFluidImage(
-    content.default.attributes.phycologyTextCoverTwo
-  );
-  // const bgThree = await getFluidImage(
-  //   content.default.attributes.phycologyTextCoverThree
-  // );
-  // const bgFour = await getFluidImage(
-  //   content.default.attributes.phycologyTextCoverFour
-  // );
-  // const videoCover = await getFluidImage(content.default.attributes.videoCover);
-  // const Test = await getFluidImage(content.default.attributes.heroVertical);
-  // const Test2 = await getFluidImage(content.default.attributes.heroHorizontal);
-
   return {
     props: {
-      // bgOne,
-      bgTwo,
-      // bgThree,
-      // bgFour,
-      // videoCover,
-      // Test2,
-      // Test,
       data: content.default.attributes,
     },
   };

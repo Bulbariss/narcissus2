@@ -3,14 +3,14 @@ import React from "react";
 import BackgroundImage from "../../components/resp-image/BackgroundImage";
 import { useMedia } from "react-use";
 
-const Hero = ({ Test2, Test, data }) => {
+const Hero = ({ data }) => {
   const isLandscape = useMedia("(orientation: landscape)");
   return (
     <>
       <BackgroundImage
-        className=""
+        className="min-h-screen"
         alt="Обложка"
-        image={!isLandscape ? Test : Test2}
+        image={!isLandscape ? data.heroVertical : data.heroHorizontal}
       >
         <div className="relative flex flex-col items-center justify-between w-full h-full min-h-screen">
           <div
