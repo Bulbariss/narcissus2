@@ -1,8 +1,8 @@
 export default {
   cms_manual_init: true,
   backend: {
-    name: "github",
-    repo: "Bulbariss/narcissus2",
+    name: "git-gateway",
+    // repo: "Bulbariss/narcissus2",
     branch: "main",
   },
   media_folder: "public/images",
