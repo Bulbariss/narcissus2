@@ -6,7 +6,7 @@ import TextBlock from "../components/TextBlock";
 import Text from "../components/Text";
 import TextLast from "../components/TextLast";
 import SecondScreen from "../components/page_pieces/SecondScreen";
-import Parallax from "../components/resp-image/BackgroundImageParallax2";
+import Parallax from "../components/resp-image/BackgroundImageParallax";
 import Video from "../components/Video";
 
 export default function Index({ data, seo }) {
