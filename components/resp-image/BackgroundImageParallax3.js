@@ -5,9 +5,7 @@ const Parallax = ({ image }) => {
   const [ref, entry] = useIntersect({
     threshold: 0,
   });
-  const h = document?.documentElement,
-    b = document?.body,
-    st = "scrollTop",
+  const st = "scrollTop",
     sh = "scrollHeight";
   let waiting = false; // Initially, we're not waiting
   function getPercent() {
@@ -17,7 +15,10 @@ const Parallax = ({ image }) => {
       // If we're not waiting
       let horizontal = document?.querySelector(".horizontal");
       let percent =
-        ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+        ((document.documentElement[st] || document.body[st]) /
+          ((document.documentElement[sh] || document.body[sh]) -
+            document.documentElement.clientHeight)) *
+        100;
       //   setPer(percent * 0.3);
       horizontal.style.transform = `translateY(${(percent - 50) * 0.3}%)`;
 
