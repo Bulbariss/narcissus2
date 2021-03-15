@@ -6,10 +6,7 @@ const Parallax = ({ image }) => {
           <div className="ttt">
             <div className="ttt2">
               <div className="nnn">
-                <div
-                  className="nnn2"
-                  style={{ backgroundImage: `url(${image})` }}
-                ></div>
+                <div className="nnn2"></div>
               </div>
             </div>
           </div>
@@ -42,16 +39,16 @@ const Parallax = ({ image }) => {
             width: 100vw;
             height: 400vh;
             position: fixed;
+            will-change: transform;
             top: 0;
           }
           .nnn2 {
             height: 200vh;
             width: 100vw;
             position: sticky;
-            will-change: auto;
-            transform: translate3d(0);
-            backface-visibility: hidden;
+            will-change: transform;
             top: 0;
+            background-image: url(${image});
             background-size: 100vmax 250vmax;
             background-position: center;
           }

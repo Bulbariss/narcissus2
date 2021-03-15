@@ -1,52 +1,67 @@
-const Parallax = () => {
-  return (
-    <div className="relative w-screen h-screen -z">
-      {/* <div className="ttt">
-        <div className="ttt2">
-          <div className="nnn">
-            <div className="nnn2"></div>
-          </div>
-        </div>
-      </div> */}
-      <div className="nnn">
-        <div className="nnn2"></div>
-      </div>
-      <style jsx>
-        {`
-          .nnn {
-            transform: scaleY(0.5) translateY(-50%);
-            width: 100vw;
-            height: 200vh;
-            top: 0;
-          }
-          .nnn2 {
-            transform: scaleY(2) translateY(-25%);
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            position: fixed;
-            will-change: transform;
-          }
+import React, { useEffect } from "react";
+import useIntersect from "../utils/useIntersect";
 
-          @media not all and (min-resolution: 0.001dpcm) {
-            @supports (-webkit-appearance: none) {
-              .nnn2:before {
-                content: "";
-                display: block;
-                width: 100%;
-                top: 0;
-                height: 100%;
-                position: fixed;
-                z-index: 9999;
-                transform: translateY(0%);
-                background-image: url(https://images.pexels.com/photos/4906286/pexels-photo-4906286.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
-                background-size: 100vmax 250vmax;
-                background-position: center;
-              }
-            }
-          }
-        `}
-      </style>
+const Parallax = ({ image }) => {
+  const [ref, entry] = useIntersect({
+    threshold: 0,
+  });
+  const h = document?.documentElement,
+    b = document?.body,
+    st = "scrollTop",
+    sh = "scrollHeight";
+  let waiting = false; // Initially, we're not waiting
+  function getPercent() {
+    // We return a throttled function
+
+    if (!waiting) {
+      // If we're not waiting
+      let horizontal = document?.querySelector(".horizontal");
+      let percent =
+        ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+      //   setPer(percent * 0.3);
+      horizontal.style.transform = `translateY(${(percent - 50) * 0.3}%)`;
+
+      waiting = true; // Prevent future invocations
+      setTimeout(function () {
+        // After a period of time
+        waiting = false; // And allow future invocations
+      }, 12);
+    }
+  }
+
+  useEffect(() => {
+    if (entry.isIntersecting) {
+      document.addEventListener("scroll", getPercent);
+    } else {
+      document.removeEventListener("scroll", getPercent);
+    }
+
+    return () => {
+      document.removeEventListener("scroll", getPercent);
+    };
+  }, [entry]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative w-full min-h-screen overflow-x-visible space-holder"
+    >
+      <div className="sticky top-0 w-screen h-screen overflow-hidden stickyContainer">
+        <div className="horizontal"></div>
+      </div>
+      <style jsx>{`
+        .horizontal {
+          background-image: url(${image});
+          background-size: 100vmax 125vmax;
+          background-position: center;
+          will-change: transform;
+          margin-top: -50vh;
+          height: 200vh;
+          width: 100vw;
+          position: absolute;
+          top: 0;
+        }
+      `}</style>
     </div>
   );
 };
