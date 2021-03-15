@@ -22,6 +22,7 @@ const Video = ({ data }) => {
           height={"auto"}
           width={"auto"}
           playsinline
+          preload="none"
           autoPlay={false}
           style={{ margin: "auto" }}
         />
