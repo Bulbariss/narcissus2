@@ -1,31 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useIntersect from "../utils/useIntersect";
-
-const Parallax = ({ image }) => {
+import { calculateVerticalPercentage } from "../utils/getViewportPercentage";
+const ParallaxImage = ({ image }) => {
   const [ref, entry] = useIntersect({
     threshold: 0,
   });
-  const st = "scrollTop",
-    sh = "scrollHeight";
-  let waiting = false; // Initially, we're not waiting
+  let el = useRef();
+
+  let waiting = false;
   function getPercent() {
-    // We return a throttled function
-
     if (!waiting) {
-      // If we're not waiting
-      let horizontal = document?.querySelector(".horizontal");
-      let percent =
-        ((document.documentElement[st] || document.body[st]) /
-          ((document.documentElement[sh] || document.body[sh]) -
-            document.documentElement.clientHeight)) *
-        100;
-      //   setPer(percent * 0.3);
-      horizontal.style.transform = `translateY(${(percent - 50) * 0.3}%)`;
+      el.current.style.transform = `translateY(${
+        (calculateVerticalPercentage(el.current) - 0.5) * 100
+      }%)`;
 
-      waiting = true; // Prevent future invocations
+      waiting = true;
       setTimeout(function () {
-        // After a period of time
-        waiting = false; // And allow future invocations
+        waiting = false;
       }, 12);
     }
   }
@@ -48,7 +39,7 @@ const Parallax = ({ image }) => {
       className="relative w-full min-h-screen overflow-x-visible space-holder"
     >
       <div className="sticky top-0 w-screen h-screen overflow-hidden stickyContainer">
-        <div className="horizontal"></div>
+        <div ref={el} className="horizontal"></div>
       </div>
       <style jsx>{`
         .horizontal {
@@ -67,4 +58,4 @@ const Parallax = ({ image }) => {
   );
 };
 
-export default Parallax;
+export default ParallaxImage;
