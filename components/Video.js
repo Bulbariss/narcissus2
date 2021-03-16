@@ -13,20 +13,7 @@ const Video = ({ data }) => {
   return (
     <div ref={ref}>
       <BackgroundImage alt="Обложка" image={data.videoCover}>
-        <ReactPlayer
-          id="react-player"
-          className={"react-player relative"}
-          onReady={() => setReady(true)}
-          playing={entry.isIntersecting && ready && play}
-          url={data.video}
-          height={"auto"}
-          width={"auto"}
-          playsinline
-          preload="none"
-          autoPlay={false}
-          style={{ margin: "auto" }}
-        />
-        {!play && (
+        {!play ? (
           <div
             className="absolute top-0 z-20 w-full h-full bg-cover video-cover"
             style={{ backgroundImage: `url(${data.videoCover})` }}
@@ -51,6 +38,20 @@ const Video = ({ data }) => {
               </svg>
             </button>
           </div>
+        ) : (
+          <ReactPlayer
+            id="react-player"
+            className={"react-player relative"}
+            onReady={() => setReady(true)}
+            playing={entry.isIntersecting && ready && play}
+            url={data.video}
+            height={"auto"}
+            width={"auto"}
+            playsinline
+            preload="none"
+            autoPlay={false}
+            style={{ margin: "auto" }}
+          />
         )}
       </BackgroundImage>
     </div>

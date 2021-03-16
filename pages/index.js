@@ -1,15 +1,18 @@
 // Components
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Parallax from "../components/resp-image/BackgroundImageParallax3";
+import SecondScreen from "../components/page_pieces/SecondScreen";
+import markdownToHtml from "../lib/blog/markdownToHtml";
 import Hero from "../components/page_pieces/Hero";
 import TextBlock from "../components/TextBlock";
-import Text from "../components/Text";
+import { getPostBySlug } from "../lib/blog/api";
 import TextLast from "../components/TextLast";
-import SecondScreen from "../components/page_pieces/SecondScreen";
-import Parallax from "../components/resp-image/BackgroundImageParallax3";
+import Layout from "../components/layout";
 import Video from "../components/Video";
+import Text from "../components/Text";
+import SEO from "../components/seo";
 
-export default function Index({ data, seo }) {
+export default function Index({ data, seo, one }) {
+  console.log(one);
   return (
     <Layout>
       <SEO title="Главная" seo={seo} />
@@ -25,7 +28,7 @@ export default function Index({ data, seo }) {
         img={data.phycologyImage}
       />
       <Parallax image={data.parallaxTwo} />
-      <Text text={data.phycologyTextTwo} image={data.phycologyTextCoverTwo} />
+      <Text content={one} image={data.phycologyTextCoverTwo} />
       <Parallax image={data.parallaxFour} />
       <Text
         text={data.phycologyTextThree}
@@ -41,10 +44,12 @@ export async function getStaticProps() {
   const content = await import(`../cms/content/pages/home.md`);
   const seo = await import(`../cms/content/config/seo.md`);
 
+  const postOne = await markdownToHtml(getPostBySlug("one.md") || "");
   return {
     props: {
       data: content.default.attributes,
       seo: seo.default.attributes,
+      one: postOne,
     },
   };
 }

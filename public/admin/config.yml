@@ -1,9 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Bulbariss/narcissus2
   branch: main
 media_folder: public/images
 public_folder: images
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 display_url: 'https://narcissus.monster'
 site_url: 'https://narcissus.monster'
 locale: ru
@@ -160,3 +161,19 @@ collections:
               - label: Ссылка
                 name: link
                 widget: string
+  - name: "posts"
+    label: "Posts"
+    folder: "cms/content"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: slug
+    summary: "{{title}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: Body
+        name: body
+        widget: markdown
