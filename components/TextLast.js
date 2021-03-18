@@ -4,7 +4,7 @@ import BackgroundImage from "../components/resp-image/BackgroundImage";
 const TextLast = ({ data, image }) => {
   return (
     <BackgroundImage
-      className="flex flex-col justify-center w-full min-h-screen pt-16 pb-6 bg-cover"
+      className="flex flex-col justify-center w-full pt-16 pb-6 bg-cover"
       image={image}
     >
       <p className="relative max-w-full px-4 m-0 mx-auto text-lg text-justify text-white whitespace-pre-wrap md:px-0 P max-w-text">

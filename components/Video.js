@@ -15,7 +15,7 @@ const Video = ({ data }) => {
       <BackgroundImage alt="Обложка" image={data.videoCover}>
         {!play ? (
           <div
-            className="absolute top-0 z-20 w-full h-full bg-cover video-cover"
+            className="z-20 w-full h-full bg-cover video-cover"
             style={{ backgroundImage: `url(${data.videoCover})` }}
           >
             <button

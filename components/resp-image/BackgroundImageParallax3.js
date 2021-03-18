@@ -1,37 +1,37 @@
 import React, { useEffect, useRef } from "react";
-import useIntersect from "../utils/useIntersect";
 import { calculateVerticalPercentage } from "../utils/getViewportPercentage";
+import useIntersect from "../utils/useIntersect";
 
 const ParallaxImage = ({ image }) => {
   const [ref, entry] = useIntersect({
     threshold: 0,
   });
+  const requestRef = useRef();
   let el = useRef();
-  let waiting = false;
+  let prev = useRef();
   function getPercent() {
-    if (!waiting) {
-      el.current.style.transform = `translateY(${(
-        (calculateVerticalPercentage(el.current) - 0.5) *
-        100
-      ).toFixed(2)}%)`;
-
-      waiting = true;
-      setTimeout(function () {
-        waiting = false;
-      }, 12);
+    if (entry.isIntersecting) {
+      let pos = ((calculateVerticalPercentage(el.current) - 0.5) * 100).toFixed(
+        4
+      );
+      if (prev.current !== pos) {
+        console.log("!");
+        prev.current = pos;
+        el.current.style.transform = `translateY(${pos}%)`;
+      }
+      requestRef.current = requestAnimationFrame(getPercent);
+    } else {
+      cancelAnimationFrame(requestRef.current);
     }
   }
 
   useEffect(() => {
     if (entry.isIntersecting) {
-      document.addEventListener("scroll", getPercent);
+      requestRef.current = requestAnimationFrame(getPercent);
     } else {
-      document.removeEventListener("scroll", getPercent);
+      cancelAnimationFrame(requestRef.current);
     }
-
-    return () => {
-      document.removeEventListener("scroll", getPercent);
-    };
+    return () => cancelAnimationFrame(requestRef.current);
   }, [entry]);
 
   return (
