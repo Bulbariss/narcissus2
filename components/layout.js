@@ -6,7 +6,7 @@ function Layout({ children }) {
   return (
     <>
       <SmartOutline />
-      <main>{children}</main>
+      <main className="font-medium">{children}</main>
     </>
   );
 }

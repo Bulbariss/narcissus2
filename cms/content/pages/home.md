@@ -108,7 +108,7 @@ phycologyTextFour: >-
 phycologyTextCoverOne: images/textblockone.jpg
 phycologyTextCoverThree: images/textblockthree.jpg
 phycologyTextCoverFour: images/textblockfour.jpg
-copyright: © 2020
+copyright: © 2021
 socials:
   - title: FACEBOOK
     link: https://facebook.com/koshka.neon

@@ -21,7 +21,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Manrope",
+          "IBMPlexSans",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",

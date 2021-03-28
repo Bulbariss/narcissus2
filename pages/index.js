@@ -1,5 +1,5 @@
 // Components
-import Parallax from "../components/resp-image/BackgroundImageParallax3";
+import Parallax from "../components/resp-image/BackgroundImageParallax";
 import SecondScreen from "../components/page_pieces/SecondScreen";
 import markdownToHtml from "../lib/blog/markdownToHtml";
 import Hero from "../components/page_pieces/Hero";

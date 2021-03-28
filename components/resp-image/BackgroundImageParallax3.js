@@ -3,11 +3,11 @@ import { calculateVerticalPercentage } from "../utils/getViewportPercentage";
 import useIntersect from "../utils/useIntersect";
 
 const ParallaxImage = ({ image }) => {
+  let el = useRef();
   const [ref, entry] = useIntersect({
     threshold: 0,
   });
   const requestRef = useRef();
-  let el = useRef();
   let prev = useRef();
   function getPercent() {
     if (entry.isIntersecting) {
@@ -35,17 +35,21 @@ const ParallaxImage = ({ image }) => {
   }, [entry]);
 
   return (
-    <div ref={ref} className="relative w-screen h-screen overflow-hidden">
-      <div
-        ref={el}
-        className="absolute top-0 w-screen bg-center bg-cover vertical"
-      ></div>
+    <div className="relative w-screen h-screen overflow-hidden">
+      <div ref={ref} className="container absolute top-0">
+        <div
+          ref={el}
+          className="w-screen h-full bg-center bg-cover vertical"
+        ></div>
+      </div>
       <style jsx>{`
         .vertical {
           background-image: url(${image});
           will-change: transform;
           transform: translate3d(0);
           backface-visibility: hidden;
+        }
+        .container {
           margin-top: -50vh;
           height: 200vh;
         }
