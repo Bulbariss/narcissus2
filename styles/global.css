@@ -25,8 +25,8 @@
   font-family: "bbb";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/RubikMonoOne-Regular.woff2") format("woff2"),
-    url("../fonts/RubikMonoOne-Regular.woff") format("woff");
+  src: url("../fonts/Another America.woff2") format("woff2"),
+    url("../fonts/Another America.woff") format("woff");
 }
 
 /* @font-face {

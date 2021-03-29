@@ -102,6 +102,9 @@ textarea::-webkit-input-placeholder {
   letter-spacing: normal;
   color: #e07ca4;
 }
+.prose > p > strong {
+  color: #cf0;
+}
 
 .btn-cc {
   border-radius: 5px;
